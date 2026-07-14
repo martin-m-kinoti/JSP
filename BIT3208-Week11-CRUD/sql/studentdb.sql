@@ -1,0 +1,19 @@
+-- Schema
+CREATE DATABASE IF NOT EXISTS studentdb;
+USE studentdb;
+
+CREATE TABLE IF NOT EXISTS students (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    first_name VARCHAR(50) NOT NULL,
+    last_name VARCHAR(50) NOT NULL,
+    email VARCHAR(100) NOT NULL UNIQUE,
+    course VARCHAR(100) NOT NULL,
+    enrollment_date DATE NOT NULL DEFAULT (CURRENT_DATE)
+);
+
+CREATE TABLE IF NOT EXISTS login_history (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(50) NOT NULL,
+    login_time DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    ip_address VARCHAR(45)
+);
