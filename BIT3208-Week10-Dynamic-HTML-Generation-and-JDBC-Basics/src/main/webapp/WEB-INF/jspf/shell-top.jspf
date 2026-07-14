@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title><%= pageTitle %> &middot; Student Records System</title>
+    <link rel="stylesheet" href="<%= request.getContextPath() %>/assets/css/style.css">
+</head>
+<body>
+    <div class="app-shell">
+        <aside class="sidebar">
+            <div class="sidebar__brand">
+                <span class="sidebar__brand-mark">SR</span>
+                <span class="sidebar__brand-name">Student Records</span>
+            </div>
+            <nav class="sidebar__nav">
+                <a class="nav-link<%= "dashboard".equals(activeNav) ? " nav-link--active" : "" %>" href="<%= request.getContextPath() %>/dashboard.jsp">Dashboard</a>
+                <a class="nav-link<%= "students".equals(activeNav) ? " nav-link--active" : "" %>" href="<%= request.getContextPath() %>/ListStudentsServlet">Students</a>
+                <a class="nav-link<%= "add-student".equals(activeNav) ? " nav-link--active" : "" %>" href="<%= request.getContextPath() %>/AddStudentServlet">Add Student</a>
+                <a class="nav-link<%= "admin".equals(activeNav) ? " nav-link--active" : "" %>" href="<%= request.getContextPath() %>/AdminServlet">Login Activity</a>
+            </nav>
+            <form class="sidebar__logout" action="<%= request.getContextPath() %>/LogoutServlet" method="post">
+                <button type="submit" class="nav-link nav-link--logout">Log Out</button>
+            </form>
+        </aside>
+        <div class="app-main">
+            <header class="topbar">
+                <h1 class="topbar__title"><%= pageTitle %></h1>
+                <span class="topbar__user">Signed in as <strong><%= session.getAttribute("username") %></strong></span>
+            </header>
+            <main class="content">
